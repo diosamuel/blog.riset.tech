@@ -10,7 +10,7 @@ Artikel ini akan membahas terkait bagaimana cara merancang dan membuat AI Agent 
 
 _OpenAI, Inc. is an American artificial intelligence organization headquartered in San Francisco, California. It aims to develop "safe and beneficial" artificial general intelligence, which it defines as "highly autonomous systems that outperform humans at most economically valuable work"._
 
-<iframe width="700" height="500" src="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf"></iframe>
+<iframe width="100%" height="500" src="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf"></iframe>
 
 ------
 
