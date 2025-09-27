@@ -23,7 +23,7 @@ dalam buku panduan OpenAI terkait perancangan _AI Agent_ menyebutkan bahwa AI Ag
 > Think as workflow + LLM = AI Agent
 
 Pada dasarnya, Agent dapat mengerjakan suatu alur pekerjaan user dengan bantuan kecerdasan ilmu dari LLM itu sendiri.
-1. AI Agent menggunakan LLM untung mengatur eksekusi alur kerja dan membuat keputusan.
+1. AI Agent menggunakan LLM untuk mengatur eksekusi alur kerja dan membuat keputusan.
 2. AI Agent mempunyai akses pada _tools_ eksternal, dengan tujuan menjalankan aksi sesuai dengan _prompt_ dari user, dan ajaibnya, AI Agent dapat memilih tools secara dinamis sesuai dengan kebutuhan user, berkat bantuan kecerdasan dari LLM itu sendiri.
 
 # Part 2 - Jadi, kapan seharusnya Anda membuat AI Agent?
