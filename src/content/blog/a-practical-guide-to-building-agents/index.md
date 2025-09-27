@@ -50,3 +50,24 @@ Workflow yang sudah di-"enhance" oleh AI Agent pada sistem deteksi kecurangan pa
 dengan bantuan AI Agent, workflow 3-5 dapat dilakukan secara dinamis kepada sistem.
 
 # Part 3 - Membangun Pondasi AI Agent
+
+3 pondasi dasar AI Agent yang dirumuskan oleh OpenAI adalah sebagai berikut
+1. Model
+
+The LLM powering the agent’s reasoning and decision-making
+
+2. Tools
+
+External functions or APIs the agent can use to take action
+
+3. Instructions
+
+Explicit guidelines and guardrails defining how the agent behaves
+
+```python
+weather_agent = Agent(
+  name="Weather agent"
+  instructions="You are a helpful agent who can talk to users about the weather."
+  tools=[get_weather],
+)
+```
