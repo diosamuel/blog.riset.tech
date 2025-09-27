@@ -1,7 +1,7 @@
 ---
-title: "Getting started"
-description: "Hit the ground running."
-date: "Mar 22 2024"
+title: "Mulai Menulis"
+description: "Mencoba untuk menulis"
+date: "Mar 22 2025"
 ---
 
 The basic configuration of Nano is pretty simple.
