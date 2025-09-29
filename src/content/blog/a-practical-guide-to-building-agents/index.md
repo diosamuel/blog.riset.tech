@@ -1,10 +1,12 @@
 ---
-title: "A practical guide to building agents OpenAI"
-description: "an instruction from OpenAI to create a AI Agent"
+title: "A practical guide to building agents by OpenAI"
+description: "Article review"
 date: "Sept 27 2025"
 ---
 
-> This post is part of my journey; Integrate Data Warehouse with AI Agent for Smart Analysis: Study Case ITERA Data Mart, 1/90 posts everyday, so wish me luck!
+> This post is part of my project journey; Integrate Data Warehouse with AI Agent for Smart Analysis: Study Case ITERA Data Mart
+
+> 1/90
 
 Artikel ini akan membahas terkait bagaimana cara merancang dan membuat AI Agent berdasarkan panduan dari OpenAI
 
@@ -16,7 +18,7 @@ _OpenAI, Inc. is an American artificial intelligence organization headquartered 
 
 # Part 1 - Apa itu AI Agent?
 
-dalam buku panduan OpenAI terkait perancangan _AI Agent_ menyebutkan bahwa AI Agent adalah sistem yang berjalan secara mandiri dan autonomus pada tools yang sudah ditentukan.
+Dalam buku panduan OpenAI terkait perancangan _AI Agent_ menyebutkan bahwa AI Agent adalah sistem yang berjalan secara mandiri dan autonomus pada tools yang sudah ditentukan.
 
 > Agents are systems that independently accomplish tasks on your behalf.
 
@@ -26,10 +28,11 @@ Pada dasarnya, Agent dapat mengerjakan suatu alur pekerjaan user dengan bantuan 
 1. AI Agent menggunakan LLM untuk mengatur eksekusi alur kerja dan membuat keputusan.
 2. AI Agent mempunyai akses pada _tools_ eksternal, dengan tujuan menjalankan aksi sesuai dengan _prompt_ dari user, dan ajaibnya, AI Agent dapat memilih tools secara dinamis sesuai dengan kebutuhan user, berkat bantuan kecerdasan dari LLM itu sendiri.
 
-# Part 2 - Jadi, kapan seharusnya Anda membuat AI Agent?
+# Part 2 - Kapan AI Agent dibutuhkan?
 
 Pada workflow yang tidak terlalu kompleks, seharusnya tidak memerlukan AI Agent untuk mengerjakan workflow tersebut. AI Agent dibutuhkan ketika proses workflow yang ada memerlukan pemikiran yang mendalam untuk mengambil sebuah keputusan.
 
+Ambil contoh studi kasus sebagai berikut;
 **Studi Kasus: Payment Fraud Analysis**
 
 Payment Fraud adalah Transaksi yang bersifat curang atau tidak atas persetujuan pemilik akun.
