@@ -32,6 +32,7 @@ const work = await Promise.all(
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
+    <img class="animate w-32 rounded-full" src="https://media.licdn.com/dms/image/v2/D5603AQEmwc2jWSk-_w/profile-displayphoto-shrink_800_800/B56ZYA7OR2GUAc-/0/1743772247963?e=1762992000&v=beta&t=1g7PsI3JWC36xEM2Kf7M6sjYAGP57hlnZEgw2Dg7iQc"/>
     <h4 class="animate font-semibold text-black dark:text-white">
       Virdio Samuel Saragih
     </h4>
@@ -39,10 +40,17 @@ const work = await Promise.all(
       <section>
         <article class="space-y-4">
           <p class="animate">
-            Yap @ riset.tech, pursuing my carrer in Data Engineer
+            21 Y.o, final year DS student @ <a  target="_blank" href="https://www.itera.ac.id/tentang-institut-teknologi-sumatera/">ITERA</a> (public uni)
           </p>
           <p class="animate">
-            
+            have a passion in Big Data, and recently pursuing my carrer in Data Engineer.
+            <br/>
+            (soon) have a proficiency in Python, R, Scala, Java, SQL, NoSQL, Hadoop, Spark, Kafka, etc.
+            <br/>
+            btw i love crafting web interfaces and designing UI/UX too 🎨. (take look my mesmerizing design @ <a href="https://dribbble.com/diosamuel">Dribbble</a> & <a href="https://instagram.com/web3ui">Web3 UI/UX</a>)
+          </p>
+          <p class="animate">
+            psstt. i try to built small community @ <a href="https://instagram.com/data.gear" target="_blank">⚙️data.gear</a>
           </p>
         </article>
       </section>
@@ -68,7 +76,7 @@ const work = await Promise.all(
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            Work Experience
+            Experience
           </h5>
           <Link href="/work">
             See all work
@@ -87,7 +95,7 @@ const work = await Promise.all(
                 {entry.data.role}
               </div>
               <article>
-                <entry.Content />
+                {/*<entry.Content />*/}
               </article>
             </li>
           ))}
