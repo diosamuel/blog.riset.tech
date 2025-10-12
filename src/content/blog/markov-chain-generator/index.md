@@ -1,43 +1,74 @@
 ---
-title: "Membuat Rekomendasi Keyboard Markov Chain"
+title: "Eksperimen Rekomendasi Keyboard Menggunakan Model Markov Chain [Draft]"
 description: "Markov Model"
 date: "October 11 2025"
 ---
 
-<img src="https://i.sstatic.net/w5J1V.png">
+<img src="https://i.sstatic.net/w5J1V.png" alt="ilustrasi markov chain pada keyboard">
+<br/>
 
+# Apa itu Markov Chain?
 
-given dataset
-```bash
-aku suka sama kamu tapi kamu suka sama dia
+Menurut [brilliant.org](https://brilliant.org/wiki/markov-chains/), A Markov chain is a mathematical system that experiences transitions from one state to another according to certain probabilistic rules. The defining characteristic of a Markov chain is that no matter how the process arrived at its present state, the possible future states are fixed. In other words, the probability of transitioning to any particular state is dependent solely on the current state and time elapsed. The state space, or set of all possible states, can be anything: letters, numbers, weather conditions, baseball scores, or stock performances.
+
+Mari kita inisiasi riwayat dari kata yang sudah didapat, diberikan dataset kumpulan _sequence_ kata sebagai berikut
+
+```text
+Aku suka kamu, tapi kamu suka dia.
+Kamu suka dia, tapi aku suka kamu.
+Aku suka kamu.
+Kamu suka dia.
+Aku, kamu. Kamu, dia.
+Tapi aku suka kamu. Tapi kamu suka dia.
+Dia, kamu suka. Kamu, aku suka.
+Tapi dia, kamu suka. Tapi kamu, aku suka.
+Suka aku, suka kamu, suka dia.
+Aku suka kamu.
+Kamu suka dia.
+Tapi.
+Aku suka kamu, tapi kamu suka dia.
 ```
 
-create a full nonsense sequence
-```bash
-aku suka sama kamu tapi kamu suka sama dia
-```
-
-get a percentation
+Dalam sebuah markov, penting untuk melihat persentase dari setiap kata yang ada, mari kita cari persentase dari setiap kata yang ada.
 ```python
-raw = "aku suka sama kamu tapi kamu suka sama dia"
-seq = list(set(raw.split()))
-prob = []
-for i in range(len(q)):
-  prob.append({
-      q[i]:(len(list(filter(lambda x:x == q[i],seq.split())))/len(seq.split()))*100
-  })
-prob
-```
-```json
-[{'dia': 11.11111111111111},
- {'aku': 11.11111111111111},
- {'kamu': 22.22222222222222},
- {'sama': 22.22222222222222},
- {'tapi': 11.11111111111111},
- {'suka': 22.22222222222222}]
-```
-that means dia = 11%
+import re
+raw_text = """
+Aku suka kamu tapi kamu suka dia
+Kamu suka dia tapi aku suka kamu
+Aku suka kamu
+Kamu suka dia
+Aku kamu Kamu dia
+Tapi aku suka kamu Tapi kamu suka dia
+Dia kamu suka Kamu aku suka
+Tapi dia kamu suka Tapi kamu aku suka
+Suka aku suka kamu suka dia
+Aku suka kamu
+Kamu suka dia
+Tapi
+Aku suka kamu tapi kamu suka dia
+""".lower()
 
+
+seq = list(set(raw_text.split()))
+prob = []
+for i in range(len(seq)):
+  prob.append({
+      seq[i]:(len(list(filter(lambda x:x == seq[i],raw_text.split())))/len(raw_text.split()))*100
+  })
+print(prob)
+```
+
+Hasil dari perhitungan persentase sebagai berikut,
+```json
+[{'dia': 15.151515151515152},
+ {'suka': 28.78787878787879},
+ {'aku': 15.151515151515152},
+ {'kamu': 28.78787878787879},
+ {'tapi': 12.121212121212121}]
+```
+Hasil diatas mempunyai arti bahwa kata "tapi" mempunyai persentase kemunculan 12% disusul dengan kata "dia" dan "aku" mempunyai persentase kemunculan sebanyak 15%, lalu yang tertinggi adalah "suka" dan "kamu" dengan persentase 28%
+
+Mari kita generate kombinasi per 2 kata
 ```python
 combination = []
 seq_list:list = seq.split()
@@ -58,6 +89,7 @@ for i in range(len(seq_list)):
  ('sama', 'dia')]
 ```
 
+Dilakukan pentotalan tiap 
 ```python
 d = {}
 d_ = {}
