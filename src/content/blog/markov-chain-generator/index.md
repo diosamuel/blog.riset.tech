@@ -1,5 +1,5 @@
 ---
-title: "Eksperimen Rekomendasi Keyboard Menggunakan Model Markov Chain [Draft]"
+title: "Let we combine keyboard Recomendation with LLM so its actually understand what the hell you writing [DRAFT]"
 description: "Markov Model"
 date: "October 11 2025"
 ---
@@ -7,9 +7,9 @@ date: "October 11 2025"
 <img src="https://i.sstatic.net/w5J1V.png" alt="ilustrasi markov chain pada keyboard">
 <br/>
 
-# Apa itu Markov Chain?
+In this blog we will create a fully context reccomendation using markov chain and LLM
 
-Menurut [brilliant.org](https://brilliant.org/wiki/markov-chains/), A Markov chain is a mathematical system that experiences transitions from one state to another according to certain probabilistic rules. The defining characteristic of a Markov chain is that no matter how the process arrived at its present state, the possible future states are fixed. In other words, the probability of transitioning to any particular state is dependent solely on the current state and time elapsed. The state space, or set of all possible states, can be anything: letters, numbers, weather conditions, baseball scores, or stock performances.
+According to [brilliant.org](https://brilliant.org/wiki/markov-chains/), A Markov chain is a mathematical system that experiences transitions from one state to another according to certain probabilistic rules. The defining characteristic of a Markov chain is that no matter how the process arrived at its present state, the possible future states are fixed. In other words, the probability of transitioning to any particular state is dependent solely on the current state and time elapsed. The state space, or set of all possible states, can be anything: letters, numbers, weather conditions, baseball scores, or stock performances.
 
 Mari kita inisiasi riwayat dari kata yang sudah didapat, diberikan dataset kumpulan _sequence_ kata sebagai berikut
 
@@ -49,7 +49,7 @@ Aku suka kamu tapi kamu suka dia
 """.lower()
 
 
-seq = list(set(raw_text.split()))
+seq = list(set(raw_text.split())) # ubah kolom value komentar
 prob = []
 for i in range(len(seq)):
   prob.append({
