@@ -7,7 +7,7 @@ import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 
 export async function getStaticPaths() {
-  const posts = (await getCollection("papers"))
+  const posts = (await getCollection("notetaking"))
     .filter(post => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return posts.map((post) => ({
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
     props: post,
   }));
 }
-type Props = CollectionEntry<"papers">;
+type Props = CollectionEntry<"notetaking">;
 
 const post = Astro.props;
 const { Content } = await post.render();
@@ -24,8 +24,8 @@ const { Content } = await post.render();
 <PageLayout title={post.data.title} description={post.data.description}>
   <Container>
     <div class="animate">
-      <BackToPrev href="/papers">
-        Back to papers
+      <BackToPrev href="/notetaking">
+        Back to notetaking
       </BackToPrev>
     </div>
     <div class="space-y-1 my-10">
