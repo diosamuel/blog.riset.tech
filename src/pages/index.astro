@@ -18,9 +18,9 @@ const projects = (await getCollection("projects"))
   .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 const notetaking = (await getCollection("notetaking"))
-  .filter(project => !project.data.draft)
+  .filter(note => !note.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
+  .slice(0,SITE.NUM_NOTETAKING_ON_HOMEPAGE);
 
 const allwork = (await getCollection("work"))
   .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
@@ -126,16 +126,16 @@ const work = await Promise.all(
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            My Paper Review
+            My Note Taking
           </h5>
-          <Link href="/projects">
-            See all projects
+          <Link href="/notetaking">
+            See all note taking
           </Link>
         </div>
         <ul class="flex flex-col gap-4">
-          {projects.map(project => (
+          {notetaking.map(note => (
             <li>
-              <ArrowCard entry={project} />
+              <ArrowCard entry={note} />
             </li>
           ))}
         </ul>
