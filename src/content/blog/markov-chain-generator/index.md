@@ -1,5 +1,5 @@
 ---
-title: "Let we combine keyboard Recomendation with LLM so its actually understand what the hell you writing [DRAFT]"
+title: "Let's Combine Keyboard Recommendations with LLMs so They Actually Understand What the Hell You’re Writing [DRAFT]"
 description: "Markov Model"
 date: "October 11 2025"
 ---
