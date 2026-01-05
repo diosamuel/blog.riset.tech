@@ -6,7 +6,7 @@ export const SITE: Site = {
   NUM_POSTS_ON_HOMEPAGE: 3,
   NUM_WORKS_ON_HOMEPAGE: 2,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
-  NUM_NOTETAKING_ON_HOMEPAGE: 3,
+  NUM_todayilearn_ON_HOMEPAGE: 3,
 };
 
 export const HOME: Metadata = {
@@ -23,9 +23,9 @@ export const WORK: Metadata = {
   TITLE: "Work",
   DESCRIPTION: "Where I have worked and what I have done.",
 };
-export const NOTETAKING: Metadata = {
-  TITLE: "Notetaking",
-  DESCRIPTION: "A collection of my notetaking, with links to repositories and demos.",
+export const todayilearn: Metadata = {
+  TITLE: "todayilearn",
+  DESCRIPTION: "What i learned today?",
 };
 export const PROJECTS: Metadata = {
   TITLE: "Projects",

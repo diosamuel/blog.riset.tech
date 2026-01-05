@@ -32,7 +32,7 @@ const projects = defineCollection({
   }),
 });
 
-const notetaking = defineCollection({
+const todayilearn = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
@@ -42,4 +42,4 @@ const notetaking = defineCollection({
   }),
 });
 
-export const collections = { blog, work, projects, notetaking };
+export const collections = { blog, work, projects, todayilearn };
