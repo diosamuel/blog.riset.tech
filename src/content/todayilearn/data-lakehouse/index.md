@@ -1,12 +1,12 @@
 ---
 title: "Bet you never heard of Data Lakehouse terms"
-description: "1/365 @/todayilearn (sorry for my bad english writing✌🏻)"
+description: "new buzzword again"
 date: "January 06 2026"
 ---
 
 This article was referenced by main paper *Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics* and its youtube video below
 
-<iframe width="500" height="500" src="https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf"/>
+<iframe width="300" height="500" src="https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf"/>
 
 ## 1980s: Data Warehouse was introduced
 
