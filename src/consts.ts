@@ -23,7 +23,7 @@ export const WORK: Metadata = {
   TITLE: "Work",
   DESCRIPTION: "Where I have worked and what I have done.",
 };
-export const todayilearn: Metadata = {
+export const TODAYILEARN: Metadata = {
   TITLE: "todayilearn",
   DESCRIPTION: "What i learned today?",
 };
