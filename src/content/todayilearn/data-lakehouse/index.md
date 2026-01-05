@@ -1,12 +1,13 @@
 ---
-title: "Bet you never heard of Data Lakehouse terms"
-description: "new buzzword again"
+title: "Understanding Data Lakehouse: Here's the Progress"
+description: "New year, new buzzword"
 date: "January 06 2026"
 ---
+Gonna update this article as these concepts start to make sense.
 
 <img width="100%" src="https://substackcdn.com/image/fetch/$s_!0gXh!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d1d2f29-23b3-4b89-8050-6a1895ec3b27_666x375.jpeg"/>
 
-This article was referenced by main paper *Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics* and its youtube video below
+This article was referenced by main paper *Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics* and the youtube video below, enjoy.
 
 <iframe width="100%" height="500" src="https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf"/>
 
