@@ -4,7 +4,8 @@ description: "new buzzword again"
 date: "January 06 2026"
 ---
 
-![Data Engineer tools meme]("https://substackcdn.com/image/fetch/$s_!0gXh!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d1d2f29-23b3-4b89-8050-6a1895ec3b27_666x375.jpeg")
+<img width="100%" src="https://substackcdn.com/image/fetch/$s_!0gXh!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d1d2f29-23b3-4b89-8050-6a1895ec3b27_666x375.jpeg"/>
+
 This article was referenced by main paper *Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics* and its youtube video below
 
 <iframe width="100%" height="500" src="https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf"/>
