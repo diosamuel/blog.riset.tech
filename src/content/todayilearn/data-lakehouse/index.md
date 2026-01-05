@@ -6,7 +6,7 @@ date: "January 06 2026"
 
 This article was referenced by main paper *Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics* and its youtube video below
 
-<iframe width="1000" height="500" src="https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf"/>
+<iframe width="500" height="500" src="https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf"/>
 
 ## 1980s: Data Warehouse was introduced
 
