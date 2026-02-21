@@ -1,5 +1,5 @@
 ---
-title: "Data Lakehouse: Here's why"
+title: "Intro to Data Lakehouse"
 description: "New year, new buzzword"
 date: "January 06 2026"
 ---
@@ -7,7 +7,7 @@ Gonna write this progress to blog as these concepts start to make sense.
 
 <img width="100%" src="https://substackcdn.com/image/fetch/$s_!0gXh!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d1d2f29-23b3-4b89-8050-6a1895ec3b27_666x375.jpeg"/>
 
-This article was referenced by main paper *Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics* and the youtube video below, enjoy.
+> This article was referenced by main paper *Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics* and the youtube video below, enjoy.
 
 <iframe width="100%" height="500" src="https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf"/>
 

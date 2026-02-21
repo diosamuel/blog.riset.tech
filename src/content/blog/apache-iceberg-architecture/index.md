@@ -16,13 +16,10 @@ Sedangkan _Data Warehouse_ merupakan sebuah database besar terpusat yang diranca
 
 Kita tidak akan membahas Data Warehouse lebih dalam, sementara itu kita akan memabahas _Data Lake_ karena fokus dari Apache Iceberg ini adalah pada lingkungan & konsep _Data Lakehouse_ khusunya _Data Lake_.
 
-## Masalah Data Lake
-
-Katakanlah
-
+<!-- ## Masalah Data Lake
 
 ## Solusi dari Apache Iceberg
 ![Ilustrasi data lake](./assets/full_iceberg_architecture.png)
 Apache Iceberg merupakan sebuah program yang bertujuan untuk mengelola `data lake` yang tidak terstruktur menjadi sebuah `table format`
 
-## Cara Kerja Apache Iceberg
+## Cara Kerja Apache Iceberg -->

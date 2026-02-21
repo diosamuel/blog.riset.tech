@@ -7,7 +7,7 @@ date: "February 19 2026"
 
 > Source: The Data Warehouse Toolkit: Third Edition
 
-# I assume you already understand how a data warehouse works
+### I assume you already understand how a data warehouse works
 ---
 
 The Four-Step dimensional modelling process was introduced by Ralph Kimball and Margy Ross in a book called **The Data Warehouse Toolkit** (see [The Data Warehouse Toolkit: Third Edition](https://www.oreilly.com/library/view/the-data-warehouse/9781118530801/9781118530801toc.xhtml)).
@@ -27,7 +27,7 @@ Business processes are the operational activities performed by an organization. 
 3. Analyzing consumer behaviour
 4. Anything your company does
 
-These business processes generate events that are translated into facts in a fact table. Most fact tables focus on the result of a single business process or event—what we'll later call the “grain”.
+These business processes generate events that are translated into facts in a fact table. Most fact tables focus on the result of a single business process or event—what we'll later call the "grain".
 
 Choosing the correct grain will help you design well-structured dimension tables later.
 
@@ -45,7 +45,7 @@ Focus on atomic data. Yes, you can also use aggregate data and store it in a tab
 
 ## Third step: answer 5W+1H in dimension tables
 
-Dimensions provide the “who, what, where, when, why, and how” context for business process events. Dimension tables are often called the “soul” of a DWH because they hold lots of descriptive information that supports drill-down and more specific analysis.
+Dimensions provide the "who, what, where, when, why, and how" context for business process events. Dimension tables are often called the "soul" of a DWH because they hold lots of descriptive information that supports drill-down and more specific analysis.
 
 Example of a dimension table:
 
