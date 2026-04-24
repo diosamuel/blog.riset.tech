@@ -1,0 +1,352 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import BackToPrev from "@components/BackToPrev.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+
+const title = "Data Lakehouse Research";
+const description =
+  "A survey of the Data Lakehouse architecture: motivation, design principles, open table formats (Delta Lake, Apache Iceberg, Apache Hudi), and its position between Data Warehouses and Data Lakes.";
+const date = new Date("2026-04-25");
+const readingTime = "12 min read";
+
+const authors = [
+  { name: "Virdio Samuel Saragih", affiliation: "ITERA, Data Science" },
+];
+
+const tags = [
+  "Data Lakehouse",
+  "Delta Lake",
+  "Apache Iceberg",
+  "Apache Hudi",
+  "Big Data",
+  "Data Engineering",
+];
+---
+
+<PageLayout title={title} description={description}>
+  <Container>
+    <div class="animate">
+      <BackToPrev href="/papers">Back to papers</BackToPrev>
+    </div>
+
+    <header class="space-y-3 my-10">
+      <div class="animate flex items-center gap-1.5 text-sm opacity-75">
+        <FormattedDate date={date} />
+        &bull;
+        <span>{readingTime}</span>
+        &bull;
+        <span>Research note</span>
+      </div>
+
+      <h1 class="animate text-2xl font-semibold text-black dark:text-white">
+        {title}
+      </h1>
+
+      <p class="animate text-sm opacity-75">
+        {
+          authors.map((a, i) => (
+            <span>
+              <span class="text-black dark:text-white">{a.name}</span>
+              <span class="opacity-75"> &mdash; {a.affiliation}</span>
+              {i < authors.length - 1 ? <span>, </span> : null}
+            </span>
+          ))
+        }
+      </p>
+
+      <ul class="animate flex flex-wrap gap-2 pt-2">
+        {
+          tags.map((tag) => (
+            <li class="text-xs px-2 py-1 rounded border border-black/15 dark:border-white/20 opacity-80">
+              {tag}
+            </li>
+          ))
+        }
+      </ul>
+    </header>
+
+    <article class="animate space-y-10 text-sm leading-relaxed">
+      <section class="space-y-3">
+        <h2 class="text-base font-semibold text-black dark:text-white">
+          Abstract
+        </h2>
+        <p>
+          The <strong>Data Lakehouse</strong> is an emerging data management
+          architecture that combines the low-cost, flexible storage of a
+          <em>data lake</em> with the transactional guarantees and performance
+          of a <em>data warehouse</em>. This note surveys the motivation
+          behind the lakehouse, reviews the enabling open table formats
+          (Delta Lake, Apache Iceberg, Apache Hudi), and discusses practical
+          trade-offs when adopting a lakehouse in modern data platforms.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-semibold text-black dark:text-white">
+          1. Background &amp; Motivation
+        </h2>
+        <p>
+          Traditional analytics stacks evolved in two stages. First, the
+          <strong>Data Warehouse</strong> (DWH) offered ACID transactions,
+          schema enforcement, and fast SQL analytics, but at a high cost and
+          with limited support for unstructured data. Second, the
+          <strong>Data Lake</strong> emerged on top of cheap object storage
+          (S3, GCS, ADLS), handling raw and semi-structured data at scale,
+          but sacrificing transactional correctness and query performance.
+        </p>
+        <p>
+          A typical organization ended up with a <em>two-tier architecture</em>:
+          a data lake for raw/ML workloads and a warehouse for BI. This
+          duplication introduced staleness, cost overhead, and governance
+          complexity. The lakehouse directly targets that pain by bringing
+          warehouse-like capabilities onto the lake.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-semibold text-black dark:text-white">
+          2. Core Design Principles
+        </h2>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>
+            <span class="text-black dark:text-white">Open storage formats:</span>
+            data is stored in columnar files (Parquet, ORC) on object storage,
+            accessible by any engine.
+          </li>
+          <li>
+            <span class="text-black dark:text-white">Transactional metadata layer:</span>
+            a table format (Delta, Iceberg, Hudi) sits on top of the files and
+            provides ACID, schema evolution, and time travel.
+          </li>
+          <li>
+            <span class="text-black dark:text-white">Separation of storage and compute:</span>
+            multiple engines (Spark, Trino, Flink, DuckDB) can read and write
+            the same table concurrently.
+          </li>
+          <li>
+            <span class="text-black dark:text-white">Unified workloads:</span>
+            BI, streaming, data science, and ML all target the same table of
+            truth.
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-semibold text-black dark:text-white">
+          3. Reference Architecture
+        </h2>
+        <pre class="p-4 rounded border border-black/15 dark:border-white/20 overflow-x-auto text-xs"><code>{`┌──────────────────────────────────────────────┐
+│              Consumption Layer               │
+│   BI  │  Notebooks  │  ML  │  Reverse ETL    │
+└──────────────────────────────────────────────┘
+                    ▲
+                    │   SQL / DataFrame
+                    ▼
+┌──────────────────────────────────────────────┐
+│              Compute Engines                 │
+│   Spark │  Trino  │  Flink  │  DuckDB        │
+└──────────────────────────────────────────────┘
+                    ▲
+                    │   Reads/Writes
+                    ▼
+┌──────────────────────────────────────────────┐
+│        Open Table Format (ACID Layer)        │
+│   Delta Lake   │   Iceberg   │   Hudi        │
+└──────────────────────────────────────────────┘
+                    ▲
+                    │
+                    ▼
+┌──────────────────────────────────────────────┐
+│      Object Storage (Parquet / ORC)          │
+│            S3 / GCS / ADLS / MinIO           │
+└──────────────────────────────────────────────┘`}</code></pre>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-semibold text-black dark:text-white">
+          4. Open Table Formats
+        </h2>
+
+        <div class="space-y-2">
+          <h3 class="font-semibold text-black dark:text-white">
+            4.1 Delta Lake
+          </h3>
+          <p>
+            Originated at Databricks. Uses a transaction log (<code
+              >_delta_log</code
+            >) with JSON and checkpoint Parquet files to record atomic commits
+            over Parquet data. Strong ecosystem around Spark and Databricks,
+            with increasing support in Trino, Flink, and DuckDB.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="font-semibold text-black dark:text-white">
+            4.2 Apache Iceberg
+          </h3>
+          <p>
+            Designed at Netflix for petabyte-scale tables. Uses a hierarchical
+            metadata tree (metadata file, manifest list, manifests) to enable
+            partition evolution, hidden partitioning, and consistent
+            snapshots. Highly engine-agnostic and increasingly a de facto
+            standard in multi-engine environments.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="font-semibold text-black dark:text-white">
+            4.3 Apache Hudi
+          </h3>
+          <p>
+            Built at Uber around streaming-first ingestion. Offers two table
+            types &mdash; Copy-on-Write and Merge-on-Read &mdash; that trade
+            write amplification against read latency. Strong upsert and CDC
+            story, making it a natural fit for incremental pipelines.
+          </p>
+        </div>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-semibold text-black dark:text-white">
+          5. Comparison Matrix
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-black/15 dark:border-white/20">
+                <th class="py-2 pr-4 font-semibold text-black dark:text-white">
+                  Aspect
+                </th>
+                <th class="py-2 pr-4 font-semibold text-black dark:text-white">
+                  Data Warehouse
+                </th>
+                <th class="py-2 pr-4 font-semibold text-black dark:text-white">
+                  Data Lake
+                </th>
+                <th class="py-2 pr-4 font-semibold text-black dark:text-white">
+                  Data Lakehouse
+                </th>
+              </tr>
+            </thead>
+            <tbody class="[&>tr]:border-b [&>tr]:border-black/10 dark:[&>tr]:border-white/10">
+              <tr>
+                <td class="py-2 pr-4">Storage format</td>
+                <td class="py-2 pr-4">Proprietary</td>
+                <td class="py-2 pr-4">Open files</td>
+                <td class="py-2 pr-4">Open files + table format</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">ACID</td>
+                <td class="py-2 pr-4">Yes</td>
+                <td class="py-2 pr-4">No</td>
+                <td class="py-2 pr-4">Yes</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">Schema enforcement</td>
+                <td class="py-2 pr-4">Strong</td>
+                <td class="py-2 pr-4">Weak</td>
+                <td class="py-2 pr-4">Strong + evolution</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">ML / unstructured</td>
+                <td class="py-2 pr-4">Limited</td>
+                <td class="py-2 pr-4">Excellent</td>
+                <td class="py-2 pr-4">Excellent</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">Cost</td>
+                <td class="py-2 pr-4">High</td>
+                <td class="py-2 pr-4">Low</td>
+                <td class="py-2 pr-4">Low &ndash; Medium</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-semibold text-black dark:text-white">
+          6. Open Research Questions
+        </h2>
+        <ol class="list-decimal pl-6 space-y-1">
+          <li>
+            How should catalogs (Unity, Polaris, Nessie, Gravitino) converge to
+            a single cross-format governance model?
+          </li>
+          <li>
+            What is the right cost model for compaction, clustering, and
+            Z-ordering on top of object storage?
+          </li>
+          <li>
+            Can streaming and batch truly share the same table without
+            sacrificing latency or correctness?
+          </li>
+          <li>
+            How do we benchmark lakehouses fairly across Delta, Iceberg, and
+            Hudi, without engine bias?
+          </li>
+        </ol>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-semibold text-black dark:text-white">
+          7. Conclusion
+        </h2>
+        <p>
+          The lakehouse is not a silver bullet, but it represents a credible
+          path toward <em>one copy of the data</em> for analytics, ML, and
+          streaming. For most organizations still running a classic
+          lake-plus-warehouse stack, adopting an open table format is the
+          cheapest, lowest-risk first step toward a lakehouse.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-base font-semibold text-black dark:text-white">
+          References
+        </h2>
+        <ol class="list-decimal pl-6 space-y-1">
+          <li>
+            Armbrust, M. et al. &mdash; <em
+              >Lakehouse: A New Generation of Open Platforms that Unify Data
+              Warehousing and Advanced Analytics</em
+            >, CIDR, 2021.
+          </li>
+          <li>
+            Databricks. &mdash;
+            <a
+              class="underline underline-offset-2"
+              href="https://delta.io"
+              target="_blank"
+              rel="noopener">Delta Lake documentation</a
+            >.
+          </li>
+          <li>
+            Apache Software Foundation. &mdash;
+            <a
+              class="underline underline-offset-2"
+              href="https://iceberg.apache.org"
+              target="_blank"
+              rel="noopener">Apache Iceberg</a
+            >.
+          </li>
+          <li>
+            Apache Software Foundation. &mdash;
+            <a
+              class="underline underline-offset-2"
+              href="https://hudi.apache.org"
+              target="_blank"
+              rel="noopener">Apache Hudi</a
+            >.
+          </li>
+          <li>
+            Kimball, R. &amp; Ross, M. &mdash; <em
+              >The Data Warehouse Toolkit (3rd ed.)</em
+            >, Wiley, 2013.
+          </li>
+        </ol>
+      </section>
+    </article>
+  </Container>
+</PageLayout>
