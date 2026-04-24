@@ -2,6 +2,7 @@
 title: "Stepping stone"
 description: "The way frog search the biggest stepping stone"
 date: "December 05 2025"
+draft: true
 ---
 
 Imagine a frog, who doesnt have anything to do, but step the stone? he grabbed all way food by step each stone by stone, all days, jumping another stone by stone, in river.

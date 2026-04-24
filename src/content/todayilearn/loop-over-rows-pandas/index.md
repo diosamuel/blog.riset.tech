@@ -2,6 +2,7 @@
 title: "Loop over rows in pandas"
 description: "Re-learning pandas in a deeper way"
 date: "Feb 28 2026"
+draft: true
 ---
 
 # Loop over rows

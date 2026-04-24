@@ -2,6 +2,7 @@
 title: "Intro to Data Lakehouse"
 description: "New year, new buzzword"
 date: "January 06 2026"
+draft: true
 ---
 Gonna write this progress to blog as these concepts start to make sense.
 

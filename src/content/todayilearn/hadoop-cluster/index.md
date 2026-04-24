@@ -2,6 +2,7 @@
 title: "Learn Hadoop HDFS Cluster"
 description: "Demo Hadoop HDFS + MapReduce (Streaming) dengan data web-server access logs"
 date: "2026"
+draft: true
 ---
 
 # Hands-on Hadoop HDFS & MapReduce (Streaming)

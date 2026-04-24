@@ -2,6 +2,7 @@
 title: "Let's Combine Keyboard Recommendations with LLMs so They Actually Understand What the Hell You’re Writing [DRAFT]"
 description: "Markov Model"
 date: "October 11 2025"
+draft: true
 ---
 
 <img src="https://i.sstatic.net/w5J1V.png" alt="ilustrasi markov chain pada keyboard">

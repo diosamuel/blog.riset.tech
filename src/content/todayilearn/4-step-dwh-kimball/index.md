@@ -2,6 +2,7 @@
 title: "Four-step dimensional modelling design process"
 description: "A four-step DWH method for dimensional modelling"
 date: "February 19 2026"
+draft: true
 ---
 
 

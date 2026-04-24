@@ -2,6 +2,7 @@
 title: "Open Table Format"
 description: "organizing your parquet file"
 date: "February 21 2026"
+draft: true
 ---
 
 > source: https://www.min.io/learn/open-table-format

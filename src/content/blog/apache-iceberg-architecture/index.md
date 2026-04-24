@@ -2,6 +2,7 @@
 title: "Mengenal Arsitektur Apache Iceberg: Catalog & Manifest"
 description: "Mengenal Arsitektur Apache Iceberg"
 date: "February 02 2025"
+draft: true
 ---
 > Sumber utama Artikel ini adalah **Buku Apache Iceberg: The Definitive Guide** & **Lakehouse Whitepaper**
 
