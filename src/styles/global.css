@@ -71,3 +71,71 @@ html #back-to-top {
 html.scrolled #back-to-top {
   @apply opacity-100 pointer-events-auto;
 }
+
+/* ---------------------------------------------------------------------------
+   Embedded media inside <article>
+   - Centered by default (Medium-style).
+   - Responsive: images / iframes / videos never overflow the reading column.
+   - On wider screens, media "breaks out" of the narrow text column and
+     extends up to 56rem, still centered on the viewport.
+   - Opt-in .wide / .media-wide classes let images and arbitrary HTML blocks
+     break out too.
+   - Opt-out .inline class keeps media locked inside the text column.
+   --------------------------------------------------------------------------- */
+
+article img,
+article picture,
+article figure,
+article video,
+article iframe,
+article embed,
+article object {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.375rem;
+}
+
+article iframe,
+article video,
+article embed,
+article object {
+  width: 100%;
+  border: 0;
+}
+
+article iframe {
+  aspect-ratio: auto 16 / 9;
+}
+
+@media (min-width: 768px) {
+  article {
+    --wide-media-width: min(calc(100vw - 2rem), 56rem);
+  }
+
+  article video,
+  article iframe,
+  article embed,
+  article object,
+  article figure.wide,
+  article img.wide,
+  article picture.wide,
+  article .media-wide {
+    width: var(--wide-media-width);
+    max-width: none;
+    margin-left: calc((100% - var(--wide-media-width)) / 2);
+    margin-right: calc((100% - var(--wide-media-width)) / 2);
+  }
+
+  article img.inline,
+  article picture.inline,
+  article figure.inline,
+  article .media-inline {
+    width: auto;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
