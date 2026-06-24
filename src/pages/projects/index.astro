@@ -8,6 +8,10 @@ import { PROJECTS } from "@consts";
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const thumbnails: Record<string, string> = {
+  "bruin-smart-plant-monitoring": "/projects/bruin-smart-plant-monitoring/assets/preview.png",
+};
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
@@ -20,7 +24,7 @@ const projects = (await getCollection("projects"))
         {
           projects.map((project) => (
             <li>
-              <ArrowCard entry={project}/>
+              <ArrowCard entry={project} thumbnail={thumbnails[project.slug]}/>
             </li>
           ))
         }
