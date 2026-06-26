@@ -283,7 +283,54 @@ Verify:
 SELECT * FROM remote.users;
 ```
 
-## Step 10: Troubleshooting
+## Step 10: Expose via Tailscale Funnel
+
+Tailscale Funnel allows you to expose a service from your Tailnet to the public internet using a Tailscale-provided hostname. This is useful when you want to share the DuckDB Quack server with users outside your Tailnet without exposing your home IP directly.
+
+### Enable Funnel on Port 9494
+
+On the Raspberry Pi, run:
+
+```bash
+tailscale funnel 9494
+```
+
+This exposes port 9494 publicly. Tailscale will assign a stable HTTPS hostname like:
+
+```
+https://raspberry-pi.tail12345.ts.net
+```
+
+### Get the DNS Name
+
+To find the assigned hostname, run:
+
+```bash
+tailscale funnel status
+```
+
+Or check via the admin console at https://login.tailscale.com/admin/machines. The hostname will be visible under your machine's funnel configuration.
+
+### Connect Using the Funnel DNS
+
+Once Funnel is active, you can connect using the Tailscale-assigned DNS name:
+
+```sql
+ATTACH 'quack:raspberry-pi.tail12345.ts.net:9494' AS remote (
+    TOKEN 'token',
+    DISABLE_SSL true
+);
+```
+
+Tailscale Funnel terminates TLS automatically, so HTTPS traffic reaches your service through Tailscale's infrastructure. This means:
+
+- No need to manage TLS certificates yourself
+- Your home IP is not exposed
+- The connection is encrypted end-to-end by Tailscale
+
+> **Note:** Funnel requires that your Tailscale account has Funnel enabled and your machine is authenticated. Check https://tailscale.com/kb/1223/tailscale-funnel for details.
+
+## Step 11: Troubleshooting
 
 ### Check if Quack is Running
 
