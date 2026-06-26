@@ -99,9 +99,7 @@ Verify that the extension loads successfully.
 Launch the Quack server and bind it to all interfaces:
 
 ```sql
-CALL quack_serve(
-    'quack:0.0.0.0:9494'
-);
+CALL quack_serve('quack:0.0.0.0:9494',allow_other_hostname=true,token='token');
 ```
 
 By default, Quack listens on port 9494.
@@ -209,6 +207,7 @@ Attach the remote database:
 
 ```sql
 ATTACH 'quack:100.70.53.55:9494' AS remote (
+    TOKEN 'token',
     DISABLE_SSL true
 );
 ```
@@ -231,6 +230,7 @@ Since Tailscale already encrypts traffic end-to-end, disabling SSL at the Quack 
 
 ```sql
 ATTACH 'quack:100.70.53.55:9494' AS remote (
+    TOKEN 'token',
     DISABLE_SSL true
 );
 ```
@@ -313,6 +313,7 @@ Solution:
 
 ```sql
 ATTACH 'quack:100.70.53.55:9494' AS remote (
+    TOKEN 'token',
     DISABLE_SSL true
 );
 ```
