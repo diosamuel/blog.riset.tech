@@ -7,11 +7,6 @@ import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
-const blog = (await getCollection("blog"))
-  .filter(post => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
-
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -45,9 +40,6 @@ const work = await Promise.all(
       <section>
         <article class="space-y-4">
           <p class="animate">
-            21 y.o, final year DS
-          </p>
-          <p class="animate">
             have a passion in Big Data, and recently pursuing my carrer in Data Engineer.
             <br/>
             btw i love crafting web interfaces and designing UI/UX too 🎨. (take look my mesmerizing design @ <a href="https://dribbble.com/diosamuel">Dribbble</a> & Web3 UI/UX)
@@ -73,7 +65,7 @@ const work = await Promise.all(
         </div>
         <ul class="flex flex-col space-y-4">
           {work.map(entry => (
-            <li>
+            <li class="animate">
               <div class="text-sm opacity-75">
                 {dateRange(entry.data.dateStart, entry.data.dateEnd)}
               </div>
@@ -84,26 +76,8 @@ const work = await Promise.all(
                 {entry.data.role}
               </div>
               <article>
-                {/*<entry.Content />*/}
+                <entry.Content />
               </article>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Latest posts
-          </h5>
-          <Link href="/blog">
-            See all posts
-          </Link>
-        </div>
-        <ul class="flex flex-col gap-4">
-          {blog.map(post => (
-            <li>
-              <ArrowCard entry={post} />
             </li>
           ))}
         </ul>

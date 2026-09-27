@@ -37,13 +37,6 @@ A recent post from the channel:
 
 If the embedded post above doesn't load, you can view it directly on Instagram: [@projekdos post](https://www.instagram.com/projekdos/p/DZLsApkk_QO/).
 
-## Tools & Workflow
-
-- **Canva / Figma** — Carousel design and template system
-- **CapCut** — Short-form video editing for reels
-- **Notion** — Content calendar and topic backlog
-- **Later / Meta Business Suite** — Scheduling and analytics
-
 ## Links
 
 - [Projekdos on Instagram](https://www.instagram.com/projekdos/)
