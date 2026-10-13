@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
+import TechBadge from "@components/TechBadge.astro";
 import { dateRange } from "@lib/utils";
 import { WORK } from "@consts";
 
@@ -35,6 +36,15 @@ const work = await Promise.all(
               <div class="text-sm opacity-75">
                 {entry.data.role}
               </div>
+              {
+                entry.data.stack?.length ? (
+                  <div class="mt-2 flex flex-wrap gap-2">
+                    {entry.data.stack.map((tech) => (
+                      <TechBadge name={tech} />
+                    ))}
+                  </div>
+                ) : null
+              }
               <article>
                 <entry.Content />
               </article>

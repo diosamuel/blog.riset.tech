@@ -3,6 +3,9 @@ company: "Bruin"
 role: "Finalist Data Engineer Competition"
 dateStart: "06/01/2026"
 dateEnd: "06/01/2026"
+stack:
+  - bruin
+  - bigquery
 ---
 
 Bruin is a unified analytics platform that brings together transformation, data quality, observability and governance. Based in Berlin, Germany (Remote).

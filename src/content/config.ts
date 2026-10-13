@@ -17,6 +17,7 @@ const work = defineCollection({
     role: z.string(),
     dateStart: z.coerce.date(),
     dateEnd: z.union([z.coerce.date(), z.string()]),
+    stack: z.array(z.string()).optional(),
   }),
 });
 
@@ -32,7 +33,7 @@ const projects = defineCollection({
   }),
 });
 
-const todayilearn = defineCollection({
+const til = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
@@ -42,4 +43,4 @@ const todayilearn = defineCollection({
   }),
 });
 
-export const collections = { blog, work, projects, todayilearn };
+export const collections = { blog, work, projects, til };

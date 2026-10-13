@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
+import TechBadge from "@components/TechBadge.astro";
 import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
@@ -12,10 +13,10 @@ const projects = (await getCollection("projects"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
-const todayilearn = (await getCollection("todayilearn"))
+const til = (await getCollection("til"))
   .filter(note => !note.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_todayilearn_ON_HOMEPAGE);
+  .slice(0,SITE.NUM_TIL_ON_HOMEPAGE);
 
 const allwork = (await getCollection("work"))
   .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
@@ -40,9 +41,7 @@ const work = await Promise.all(
       <section>
         <article class="space-y-4">
           <p class="animate">
-            have a passion in Big Data, and recently pursuing my carrer in Data Engineer.
-            <br/>
-            btw i love crafting web interfaces and designing UI/UX too 🎨. (take look my mesmerizing design @ <a href="https://dribbble.com/diosamuel">Dribbble</a>)
+            I'm passionate about big data, work as a Junior Data Engineer, and love joining tables.
           </p>
         </article>
       </section>
@@ -68,6 +67,15 @@ const work = await Promise.all(
               <div class="text-sm opacity-75">
                 {entry.data.role}
               </div>
+              {
+                entry.data.stack?.length ? (
+                  <div class="mt-2 flex flex-wrap gap-2">
+                    {entry.data.stack.map((tech) => (
+                      <TechBadge name={tech} />
+                    ))}
+                  </div>
+                ) : null
+              }
               <article>
                 <entry.Content />
               </article>
@@ -97,14 +105,14 @@ const work = await Promise.all(
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            todayilearn
+            TIL
           </h5>
-          <Link href="/todayilearn">
+          <Link href="/til">
             Read
           </Link>
         </div>
         <ul class="flex flex-col gap-4">
-          {todayilearn.map(note => (
+          {til.map(note => (
             <li>
               <ArrowCard entry={note} />
             </li>

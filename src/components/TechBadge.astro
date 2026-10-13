@@ -1,0 +1,33 @@
+---
+type Props = {
+  name: string;
+};
+
+const { name } = Astro.props;
+
+const ICONS: Record<string, { src: string; label: string }> = {
+  bigquery: { src: "/icon/bigquery.webp", label: "BigQuery" },
+  dbt: { src: "/icon/dbt.png", label: "dbt" },
+  bruin: { src: "/icon/bruin.svg", label: "Bruin" },
+};
+
+const icon = ICONS[name.toLowerCase()];
+---
+
+<span
+  class="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-black/5 px-2.5 py-1 text-xs font-medium text-black/75 dark:border-white/10 dark:bg-white/5 dark:text-white/75"
+>
+  {
+    icon && (
+      <img
+        src={icon.src}
+        alt={icon.label}
+        width="14"
+        height="14"
+        loading="lazy"
+        class="h-3.5 w-3.5 rounded-sm object-contain"
+      />
+    )
+  }
+  {icon ? icon.label : name}
+</span>

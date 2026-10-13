@@ -3,22 +3,22 @@ import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
-import { TODAYILEARN } from "@consts";
+import { TIL } from "@consts";
 
-const todayilearn = (await getCollection("todayilearn"))
+const til = (await getCollection("til"))
   .filter(note => !note.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<PageLayout title={TODAYILEARN.TITLE} description={TODAYILEARN.DESCRIPTION}>
+<PageLayout title={TIL.TITLE} description={TIL.DESCRIPTION}>
   <Container>
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">
-        todayilearn
+        TIL
       </div>
       <ul class="animate flex flex-col gap-4">
         {
-          todayilearn.map((note) => (
+          til.map((note) => (
             <li>
               <ArrowCard entry={note}/>
             </li>

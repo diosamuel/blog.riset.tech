@@ -1,5 +1,5 @@
 ---
-// adjust for todayilearn collection
+// adjust for til collection
 import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
@@ -9,15 +9,15 @@ import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
 
 export async function getStaticPaths() {
-  const todayilearn = (await getCollection("todayilearn"))
+  const til = (await getCollection("til"))
     .filter(post => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  return todayilearn.map((note) => ({
+  return til.map((note) => ({
     params: { slug: note.slug },
     props: note,
   }));
 }
-type Props = CollectionEntry<"todayilearn">;
+type Props = CollectionEntry<"til">;
 
 const note = Astro.props;
 const { Content } = await note.render();
@@ -26,8 +26,8 @@ const { Content } = await note.render();
 <PageLayout title={note.data.title} description={note.data.description}>
   <Container>
     <div class="animate">
-      <BackToPrev href="/todayilearn">
-        Back to todayilearn
+      <BackToPrev href="/til">
+        Back to TIL
       </BackToPrev> 
     </div>
     <div class="space-y-1 my-10">
